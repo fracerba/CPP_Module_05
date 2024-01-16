@@ -2,19 +2,19 @@
 
 Bureaucrat::Bureaucrat() : name("Default")
 {
-	std::cout<<"Default constructor called\n";
+	std::cout<<"Bureaucrat Default constructor called\n";
 	this->grade = 150;
 }
 
 Bureaucrat::Bureaucrat(std::string new_name, int new_grade) : name(new_name)
 {
-	std::cout<<"Parametrical constructor called\n";
+	std::cout<<"Bureaucrat "<<name<<" constructor called\n";
 	try
 	{
 		if (new_grade < 1)
 			throw (GradeTooHighException());
 		if (new_grade > 150)
-		   throw (GradeTooHighException());
+		   throw (GradeTooLowException());
 		this->grade = new_grade;
 	}
 	catch(GradeTooHighException &e)
@@ -31,18 +31,18 @@ Bureaucrat::Bureaucrat(std::string new_name, int new_grade) : name(new_name)
 
 Bureaucrat::Bureaucrat(const Bureaucrat &Bureaucrat)
 {
-	std::cout<<"Copy constructor called\n";
+	std::cout<<"Bureaucrat "<<name<<" Copy constructor called\n";
 	*this = Bureaucrat;
 }
 
 Bureaucrat::~Bureaucrat()
 {
-	std::cout<<"Destructor called\n";
+	std::cout<<"Bureaucrat "<<name<<" Destructor called\n";
 }
 
 Bureaucrat& Bureaucrat::operator=(const Bureaucrat &Bureaucrat)
 {
-	std::cout<<"Copy assignment operator called\n";
+	std::cout<<"Bureaucrat "<<name<<" Copy assignment operator called\n";
 	this->grade = Bureaucrat.getGrade();
 	return(*this);
 }
@@ -64,7 +64,7 @@ void Bureaucrat::setGrade(int new_grade)
 		if (new_grade < 1)
 			throw (GradeTooHighException());
 		if (new_grade > 150)
-		   throw (GradeTooHighException());
+		   throw (GradeTooLowException());
 		this->grade = new_grade;
 	}
 	catch(GradeTooHighException &e)

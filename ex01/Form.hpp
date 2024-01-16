@@ -7,16 +7,18 @@
 #include <fstream>
 #include "Bureaucrat.hpp"
 
+class Bureaucrat;
+
 class Form
 {
     private:
-        const std::string name;
-        bool    sign;
-        const int   sign_grade;
-        const int   exec_grade;
+        const std::string   name;
+        bool                sign;
+        const int           sign_grade;
+        const int           exec_grade;
     public:
         Form();
-        Form(std::string new_name, int new_grade);
+        Form(std::string new_name, int grade_sign, int grade_exec);
         Form(const Form &Form);
         ~Form();
         Form& operator=(const Form &Form);
@@ -25,31 +27,28 @@ class Form
         bool getSigned() const;
         int  getSignGrade() const;
         int  getExecGrade() const;
-        void setSigned(bool sign);
-        //void setSignGrade(int new_grade);
-        //void setExecGrade(int new_grade);
-        void beSigned(Bureaucrat b);
+        void setSigned(bool new_sign);
+        void beSigned(Bureaucrat &b);
+    
+    class GradeTooHighException : public std::exception
+    {
+        public:
+            virtual const char* what() const throw()
+            {
+                return ("Grade too high");
+            }
+    };
+
+    class GradeTooLowException : public std::exception
+    {
+        public:
+            virtual const char* what() const throw()
+            {
+                return ("Grade too low");
+            }
+    };
 };
 
 std::ostream& operator<<(std::ostream& os, const Form &Form);
-
-class GradeTooHighException : public std::exception
-{
-    public:
-        virtual const char* what() const throw()
-        {
-            return ("Grade too high, the highest is 1");
-        }
-};
-
-class GradeTooLowException : public std::exception
-{
-    public:
-        virtual const char* what() const throw()
-        {
-            return ("Grade too low, the lowest is 150");
-        }
-};
-
 
 #endif

@@ -7,6 +7,8 @@
 #include <fstream>
 #include "Form.hpp"
 
+class Form;
+
 class Bureaucrat
 {
     private:
@@ -24,28 +26,27 @@ class Bureaucrat
         void setGrade(int new_grade);
         void incrementGrade();
         void decrementGrade();
-        void signForm(Form a);
+        void signForm(Form &a);
+    
+    class GradeTooHighException : public std::exception
+    {
+        public:
+            virtual const char* what() const throw()
+            {
+                return ("Grade too high, the highest is 1");
+            }
+    };
+
+    class GradeTooLowException : public std::exception
+    {
+        public:
+            virtual const char* what() const throw()
+            {
+                return ("Grade too low, the lowest is 150");
+            }
+    };
 };
 
 std::ostream& operator<<(std::ostream& os, const Bureaucrat &Bureaucrat);
-
-class GradeTooHighException : public std::exception
-{
-    public:
-        virtual const char* what() const throw()
-        {
-            return ("Grade too high, the highest is 1");
-        }
-};
-
-class GradeTooLowException : public std::exception
-{
-    public:
-        virtual const char* what() const throw()
-        {
-            return ("Grade too low, the lowest is 150");
-        }
-};
-
 
 #endif

@@ -6,7 +6,7 @@ int main()
     Bureaucrat a("Hermes", 36);
     Form b("Bender", 35, 35);
     Form c;
-    Form d("Flexo", 200, 0);
+    Form d("Flexo", 200, 10);
 
     std::cout<<"\n"<<a;
     std::cout<<"\n"<<b;

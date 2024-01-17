@@ -75,19 +75,12 @@ void Form::setSigned(bool new_sign)
 
 void Form::beSigned(Bureaucrat &b)
 {
-    if (this->sign == true)
+	if (this->sign == true)
         return ;
-    try
-	{
-		if (b.getGrade() <= this->sign_grade)
-			this->sign = true;
-		else
-		   throw (GradeTooLowException());
-	}
-	catch(GradeTooLowException &e)
-	{
-		std::cerr << e.what() << '\n';
-	}
+	if (b.getGrade() <= this->sign_grade)
+		this->sign = true;
+	else
+		throw (GradeTooLowException());
 }
 
 std::ostream& operator<<(std::ostream& os, const Form &Form)

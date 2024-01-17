@@ -117,10 +117,7 @@ void Bureaucrat::signForm(Form &a)
 	try
 	{
 		a.beSigned(*this);
-		if (a.getSigned() == true)
-			std::cout<<"Bureaucrat "<<name<<" signed "<<a.getName()<<"\n";
-		else
-		   throw (Form::GradeTooLowException());
+		std::cout<<"Bureaucrat "<<name<<" signed "<<a.getName()<<"\n";
 	}
 	catch(Form::GradeTooLowException &e)
 	{

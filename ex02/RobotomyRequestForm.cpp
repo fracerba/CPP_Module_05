@@ -26,3 +26,17 @@ RobotomyRequestForm& RobotomyRequestForm::operator=(const RobotomyRequestForm &F
     target = Form.target;
 	return(*this);
 }
+
+void RobotomyRequestForm::execute(const Bureaucrat &executor) const
+{
+    if (!this->getSigned())
+        throw NotSignedException();
+    if (executor.getGrade() > this->getExecGrade())
+        throw GradeExecTooLowException();
+    srand(time(NULL));
+    std::cout << "BZZZZZZZZZZZZZZZZ!\n";
+    if(rand() % 2)
+        std::cout << target <<" has been successfully robotomized \n";
+    else
+        std::cout << "The robotomy of "<< target <<" failed \n";
+}

@@ -120,11 +120,36 @@ void Bureaucrat::signForm(AForm &a)
 		if (a.getSigned() == true)
 			std::cout<<"Bureaucrat "<<name<<" signed "<<a.getName()<<"\n";
 		else
-		   throw (AForm::GradeTooLowException());
+		   throw (AForm::GradeSignTooLowException());
+	}
+	catch(AForm::GradeSignTooLowException &e)
+	{
+		std::cerr << "Bureaucrat "<<name<<" couldn't sign "<<a.getName()<<" because " << e.what() << '\n';
+	}
+}
+
+void Bureaucrat::executeForm(AForm const &form)
+{
+	try
+	{
+		form.execute(*this);
+		std::cout<<"Bureaucrat "<<name<<" executed "<<form.getName()<<"\n";
 	}
 	catch(AForm::GradeTooLowException &e)
 	{
-		std::cerr << "Bureaucrat "<<name<<" couldn't sign "<<a.getName()<<" because " << e.what() << '\n';
+		std::cerr << "Bureaucrat "<<name<<" couldn't execute "<<form.getName()<<" because " << e.what() << '\n';
+	}
+	catch(AForm::GradeSignTooLowException &e)
+	{
+		std::cerr << "Bureaucrat "<<name<<" couldn't execute "<<form.getName()<<" because " << e.what() << '\n';
+	}
+	catch(AForm::GradeExecTooLowException &e)
+	{
+		std::cerr << "Bureaucrat "<<name<<" couldn't execute "<<form.getName()<<" because " << e.what() << '\n';
+	}
+	catch(AForm::NotSignedException &e)
+	{
+		std::cerr << "Bureaucrat "<<name<<" couldn't execute "<<form.getName()<<" because " << e.what() << '\n';
 	}
 }
 

@@ -26,3 +26,33 @@ ShrubberyCreationForm& ShrubberyCreationForm::operator=(const ShrubberyCreationF
     target = Form.target;
 	return(*this);
 }
+
+void ShrubberyCreationForm::execute(const Bureaucrat &executor) const
+{
+    std::ofstream file;
+    std::string name;
+
+    name = target + "_shrubbery";
+    if (!this->getSigned())
+        throw NotSignedException();
+    if (executor.getGrade() > this->getExecGrade())
+        throw GradeExecTooLowException();
+    file.open(name.c_str());
+    file << "              .     .  .      +     .      .          .\n";
+    file << "     .       .      .     #       .           .\n";
+    file << "        .      .         ###            .      .      .\n";
+    file << "      .      .   \"#:. .:##\"##:. .:#\"  .      .\n";
+    file << "          .      . \"####\"###\"####\"  .\n";
+    file << "       .     \"#:.    .:#\"###\"#:.    .:#\"  .        .       .\n";
+    file << "  .             \"#########\"#########\"        .        .\n";
+    file << "        .    \"#:.  \"####\"###\"####\"  .:#\"   .       .\n";
+    file << "     .     .  \"#######\"\"##\"##\"\"#######\"                  .\n";
+    file << "                .\"##\"#####\"#####\"##\"           .      .\n";
+    file << "    .   \"#:. ...  .:##\"###\"###\"##:.  ... .:#\"     .\n";
+    file << "      .     \"#######\"##\"#####\"##\"#######\"      .     .\n";
+    file << "    .    .     \"#####\"\"#######\"\"#####\"    .      .\n";
+    file << "            .     \"      000      \"    .     .\n";
+    file << "       .         .   .   000     .        .       .\n";
+    file << ".. .. ..................O000O........................ ...... ...\n";
+    file.close();
+}

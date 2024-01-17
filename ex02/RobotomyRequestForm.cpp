@@ -2,16 +2,19 @@
 
 RobotomyRequestForm::RobotomyRequestForm() : AForm("Default", 72, 45)
 {
+    target = "Default";
 	std::cout<<"RobotomyRequestForm Default constructor called\n";
 }
 
-RobotomyRequestForm::RobotomyRequestForm(const std::string target) : AForm(target, 72, 45)
+RobotomyRequestForm::RobotomyRequestForm(const std::string trgt) : AForm(trgt, 72, 45)
 {
+    target = trgt;
 	std::cout<<"RobotomyRequestForm "<<target<<" constructor called\n";
 }
 
 RobotomyRequestForm::RobotomyRequestForm(const RobotomyRequestForm &Form) : AForm(Form.target, 72, 45)
 {
+    target = Form.target;
 	std::cout<<"RobotomyRequestForm "<<target<<" Copy constructor called\n";
 }
 

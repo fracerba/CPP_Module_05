@@ -2,16 +2,19 @@
 
 PresidentialPardonForm::PresidentialPardonForm() : AForm("Default", 25, 5)
 {
+    target = "Default";
 	std::cout<<"PresidentialPardonForm Default constructor called\n";
 }
 
-PresidentialPardonForm::PresidentialPardonForm(const std::string target) : AForm(target, 25, 5)
+PresidentialPardonForm::PresidentialPardonForm(const std::string trgt) : AForm(trgt, 25, 5)
 {
+    target = trgt;
 	std::cout<<"PresidentialPardonForm "<<target<<" constructor called\n";
 }
 
 PresidentialPardonForm::PresidentialPardonForm(const PresidentialPardonForm &Form) : AForm(Form.target, 25, 5)
 {
+    target = Form.target;
 	std::cout<<"PresidentialPardonForm "<<target<<" Copy constructor called\n";
 }
 

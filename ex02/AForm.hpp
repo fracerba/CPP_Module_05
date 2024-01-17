@@ -5,6 +5,7 @@
 #include <string>
 #include <exception> 
 #include <fstream>
+#include <math.h>
 #include "Bureaucrat.hpp"
 
 class Bureaucrat;

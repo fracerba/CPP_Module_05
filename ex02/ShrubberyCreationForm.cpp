@@ -33,14 +33,14 @@ ShrubberyCreationForm& ShrubberyCreationForm::operator=(const ShrubberyCreationF
 void ShrubberyCreationForm::execute(const Bureaucrat &executor) const
 {
     std::ofstream file;
-    std::string name;
+    std::string filename;
 
-    name = target + "_shrubbery";
+    filename = target + "_shrubbery";
     if (!this->getSigned())
         throw NotSignedException();
     if (executor.getGrade() > this->getExecGrade())
         throw GradeExecTooLowException();
-    file.open(name.c_str());
+    file.open(filename.c_str());
     file << "              .     .  .      +     .      .          .\n";
     file << "     .       .      .     #       .           .\n";
     file << "        .      .         ###            .      .      .\n";

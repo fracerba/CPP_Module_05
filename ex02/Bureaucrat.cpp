@@ -29,10 +29,10 @@ Bureaucrat::Bureaucrat(std::string new_name, int new_grade) : name(new_name)
 	}
 }
 
-Bureaucrat::Bureaucrat(const Bureaucrat &Bureaucrat)
+Bureaucrat::Bureaucrat(const Bureaucrat &bureaucrat)
 {
 	std::cout<<"Bureaucrat "<<name<<" Copy constructor called\n";
-	*this = Bureaucrat;
+	*this = bureaucrat;
 }
 
 Bureaucrat::~Bureaucrat()
@@ -40,10 +40,10 @@ Bureaucrat::~Bureaucrat()
 	std::cout<<"Bureaucrat "<<name<<" Destructor called\n";
 }
 
-Bureaucrat& Bureaucrat::operator=(const Bureaucrat &Bureaucrat)
+Bureaucrat& Bureaucrat::operator=(const Bureaucrat &bureaucrat)
 {
 	std::cout<<"Bureaucrat "<<name<<" Copy assignment operator called\n";
-	this->grade = Bureaucrat.getGrade();
+	this->grade = bureaucrat.getGrade();
 	return(*this);
 }
 
@@ -150,8 +150,8 @@ void Bureaucrat::executeForm(AForm const &form)
 	}
 }
 
-std::ostream& operator<<(std::ostream& os, const Bureaucrat &Bureaucrat)
+std::ostream& operator<<(std::ostream& os, const Bureaucrat &bureaucrat)
 {
-	os << Bureaucrat.getName()<<", bureaucrat grade "<<Bureaucrat.getGrade()<<"."<<std::endl;
+	os << bureaucrat.getName()<<", bureaucrat grade "<<bureaucrat.getGrade()<<"."<<std::endl;
 	return (os);
 }

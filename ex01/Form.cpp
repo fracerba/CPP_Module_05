@@ -31,7 +31,7 @@ Form::Form(std::string new_name, int grade_sign, int grade_exec) : name(new_name
 	}
 }
 
-Form::Form(const Form &Form) : name(Form.name), sign(Form.sign), sign_grade(Form.sign_grade), exec_grade(Form.exec_grade)
+Form::Form(const Form &form) : name(form.name), sign(form.sign), sign_grade(form.sign_grade), exec_grade(form.exec_grade)
 {
 	std::cout<<"Form "<<name<<" Copy constructor called\n";
 }
@@ -41,10 +41,10 @@ Form::~Form()
 	std::cout<<"Form "<<name<<" Destructor called\n";
 }
 
-Form& Form::operator=(const Form &Form)
+Form& Form::operator=(const Form &form)
 {
 	std::cout<<"Form "<<name<<" Copy assignment operator called\n";
-	this->sign = Form.getSigned();
+	this->sign = form.getSigned();
 	return(*this);
 }
 
@@ -83,13 +83,13 @@ void Form::beSigned(Bureaucrat &b)
 		throw (GradeTooLowException());
 }
 
-std::ostream& operator<<(std::ostream& os, const Form &Form)
+std::ostream& operator<<(std::ostream& os, const Form &form)
 {
-	os<<"Form Name: "<<Form.getName()<<std::endl;
-    os<<"Form Sign Grade: "<<Form.getSignGrade()<<std::endl;
-    os<<"Form Execute Grade: "<<Form.getExecGrade()<<std::endl;
+	os<<"Form Name: "<<form.getName()<<std::endl;
+    os<<"Form Sign Grade: "<<form.getSignGrade()<<std::endl;
+    os<<"Form Execute Grade: "<<form.getExecGrade()<<std::endl;
     os<<"Form Signed: ";
-    if (Form.getSigned() == true)
+    if (form.getSigned() == true)
         os<<"YES"<<std::endl;
     else
         os<<"NO"<<std::endl;

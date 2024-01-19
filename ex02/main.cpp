@@ -22,7 +22,7 @@ int main()
     std::cout<<"\n"<<b;
     std::cout<<"\n"<<c;
     std::cout<<"\n"<<d<<"\n";
-    std::cout<<"Incremeting grades\n";
+    std::cout<<"Incremeting grades";
     a.setGrade(24);
     std::cout<<"\n"<<a<<"\n";
     std::cout<<"Signing forms\n";
@@ -39,7 +39,7 @@ int main()
     std::cout<<"\n"<<b;
     std::cout<<"\n"<<c;
     std::cout<<"\n"<<d<<"\n";
-    std::cout<<"Incremeting grades\n";
+    std::cout<<"Incremeting grades";
     a.setGrade(2);
     std::cout<<"\n"<<a<<"\n";
     std::cout<<"Executing forms\n";

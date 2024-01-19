@@ -1,3 +1,6 @@
+#ifndef PresidentialPardonForm_HPP
+#define PresidentialPardonForm_HPP
+
 #include "AForm.hpp"
 
 class PresidentialPardonForm : public AForm
@@ -13,3 +16,5 @@ class PresidentialPardonForm : public AForm
 
         void execute(Bureaucrat const & executor) const;
 };
+
+#endif

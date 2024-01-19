@@ -17,9 +17,9 @@ class Bureaucrat
     public:
         Bureaucrat();
         Bureaucrat(std::string new_name, int new_grade);
-        Bureaucrat(const Bureaucrat &Bureaucrat);
+        Bureaucrat(const Bureaucrat &bureaucrat);
         ~Bureaucrat();
-        Bureaucrat& operator=(const Bureaucrat &Bureaucrat);
+        Bureaucrat& operator=(const Bureaucrat &bureaucrat);
 
         std::string getName() const;
         int getGrade() const; 
@@ -47,6 +47,6 @@ class Bureaucrat
     };
 };
 
-std::ostream& operator<<(std::ostream& os, const Bureaucrat &Bureaucrat);
+std::ostream& operator<<(std::ostream& os, const Bureaucrat &bureaucrat);
 
 #endif

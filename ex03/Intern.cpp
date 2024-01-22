@@ -19,7 +19,7 @@ Intern::~Intern()
 Intern& Intern::operator=(const Intern &intern)
 {
 	std::cout<<"Intern Copy assignment operator called\n";
-	*this = intern;
+	(void)intern;
 	return(*this);
 }
 
